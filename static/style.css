@@ -1,0 +1,205 @@
+/* General Styles */
+body {
+    font-family: "Comic Sans MS", cursive;
+    margin: 0;
+    padding: 0;
+    background-color: #386641; /* Primary background color */
+    color: #f2e8cf; /* Text color */
+    font-size: 20px;
+}
+
+header {
+    display: flex;
+    justify-content: center;
+    padding: 0;
+    background-color: #edc531; /* Header background color */
+}
+
+.logo {
+    max-width: 100px; /* Adjust as needed */
+    margin-right: 10px; /* Add some space between the logo and the site name */
+}
+
+.header-content {
+    display: flex;
+    align-items: flex-start;
+}
+
+.site-name {
+    margin-left: 15px;
+    font-family: cursive;
+    font-size: 50px;
+    color: #370617;
+    font-weight: bold;
+}
+
+.slog {
+    font-family: "Comic Sans MS", cursive;
+    font-size: 30px;
+    color: #f2e8cf;
+    margin-top: 10px;
+}
+
+/* Section Styles */
+section {
+    padding: 40px 20px;
+    text-align: center;
+}
+
+#homepage .imgcon {
+    position: relative;
+    width: 640px; /* Adjusted to match video width */
+    height: 360px; /* Adjusted to match video height */
+    overflow: hidden;
+    margin: 0 auto; /* Center the video */
+    border: 2px solid #f2e8cf;
+    border-radius: 10px;
+}
+
+#homepage .imgcon video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Ensure the video covers the container */
+    border-radius: 10px; /* Match the container's border radius */
+}
+
+#homepage .content {
+    margin-top: 20px;
+}
+
+#welcome {
+    background-color: #d8e8b2; /* Section background color */
+    color: #386641; /* Text color */
+}
+
+#prediction .prediction-box {
+    background-color: #fffce4; /* Form background color */
+    color: #386641; /* Text color */
+    padding: 20px;
+    border-radius: 10px;
+    display: inline-block;
+}
+
+#prediction .prediction-box h2 {
+    margin-top: 0;
+    color: #6a994e; /* Heading color */
+}
+
+#prediction-form {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap; /* Allow wrapping for smaller screens */
+}
+
+#prediction-form label, #prediction-form input, #prediction-form button {
+    margin: 10px;
+}
+
+#prediction-form input {
+    padding: 5px;
+    border: 1px solid #6a994e; /* Border color */
+    border-radius: 5px;
+}
+
+#prediction-form button {
+    padding: 10px 20px;
+    background-color: #6a994e; /* Button background color */
+    color: #f2e8cf; /* Button text color */
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+#prediction-form button:hover {
+    background-color: #a7c957; /* Button hover color */
+}
+
+.result-box {
+    background-color: #faf6ec; /* Result box background color */
+    color: #160737; /* Text color */
+    padding: 20px;
+    border-radius: 10px;
+    margin-top: 20px;
+    display: inline-block;
+    width: 100%;
+    max-width: 800px;
+    margin: 20px auto 0; /* Center the result box */
+}
+
+.result-box .result {
+       margin-top: 0;
+}
+
+#about {
+    background-color: #a7c957; /* Section background color */
+    color: #386641; /* Text color */
+}
+
+#box-container {
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+#iframe-container iframe {
+    width: 100%;
+    height: 500px;
+    border: none;
+}
+
+#graph-info {
+    background-color: #d8e8b2; /* Section background color */
+    color: #582f0e; /* Text color */
+    font-size: 18px;
+    margin-bottom: 50px;
+}
+
+#image-dropdown {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: #dbfeb8; /* Section background color */
+    color: #386641; /* Text color */
+    padding: 40px 20px;
+    border-radius: 10px;
+    width: 100%;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+main {
+    margin-bottom: 50px; /* Adjust this value as needed */
+}
+
+footer {
+    background-color: #6a994e; /* Footer background color */
+    padding: 20px 0;
+    text-align: center;
+    color: #f2e8cf; /* Text color */
+}
+
+/* Legend Styles */
+.legend {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 20px;
+}
+.legend div {
+    display: flex;
+    align-items: center;
+    margin-right: 20px;
+}
+.legend div span {
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    margin-right: 5px;
+}
+.legend div span.eastern { background-color: #78ea9e; }
+.legend div span.southern { background-color: #acebc6; }
+.legend div span.northern { background-color: #387643; }
+.legend div span.central { background-color: #4ba570; }
+.legend div span.western { background-color: #72c57f; }

@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+       <!-- Other meta tags and links -->
+       <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.17/d3.min.js"></script>
+       <script src="https://cdnjs.cloudflare.com/ajax/libs/topojson/1.6.9/topojson.min.js"></script>
+       <script src="https://cdnjs.cloudflare.com/ajax/libs/datamaps/0.5.9/datamaps.ind.js"></script>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FireSight</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+   <header>
+        <div class="header-content">
+            <img src="https://i.ibb.co/wvDrR9P/logo.png" alt="FireSight Logo" class="logo">
+            <h1 class="site-name">FireSight</h1>
+        </div>
+   </header>
+   <main>
+        <!-- Homepage and Initial Transition Section -->
+        <section id="homepage">
+            <div class="imgcon">
+                <video width="640" height="640" autoplay loop muted>
+                    <source src="{{ url_for('static', filename='trans.mp4') }}" type="video/mp4">
+                </video>
+            </div>
+            <div class="content">
+                <h2>Explore the Forest Fire Insights</h2>
+                <p>Your Guide to Predicting and Understanding Forest Fires</p>
+            </div>
+        </section>
+
+        <section id="welcome">
+            <h2>Welcome to the Forest Fire Prediction System</h2>
+            <h3>Enter the environmental parameters to predict the likelihood of a fire</h3p>
+        </section>
+        <!-- Forest Fire Prediction Section -->
+        <section id="prediction">
+            <div class="prediction-box">
+                <h1>Forest Fire Prediction</h1>
+                <form action="/predict" method="post">
+                    <label for="oxygen">Oxygen</label>
+                    <input type="number" id="oxygen" name="oxygen" required>
+                    <label for="temperature">Temperature</label>
+                    <input type="number" id="temperature" name="temperature" required>
+                    <label for="humidity">Humidity</label>
+                    <input type="number" id="humidity" name="humidity" required><br><br>
+                    <button type="submit">Predict</button>
+                </form>
+            </div>
+            <div class="result-box">
+                {% if prediction_result %}
+                    <div class="result">
+                    <b>
+                    <h1 class="result" font-size: 30px; style="color: red;">{{ prediction_result }}</h1>
+                    <p class="result"  font-size: 25px; style="color: rgb(108, 51, 128);">Forest Name: {{ forest_name }}</p>
+                    <p class="result"  font-size: 25px; style="color: green;">State: {{ state }}</p>
+                    <p class="result"  font-size: 25px; style="color: rgb(186, 53, 122);">City: {{ city }}</p>
+                    <p class="result"  font-size: 25px; style="color: rgb(7, 123, 123);">Region: {{ region }}</p>
+                    </b>
+                    </div>
+                {% else %}
+                    <div class="result">
+                        <p>Result will be displayed here...</p>
+                    </div>
+                {% endif %}
+            </div>
+        </section>
+        <!-- About FireSight Section -->
+        <section id="about">
+            <h2>About FireSight</h2>
+            <p>FireSight is dedicated to predicting forest fires in India using advanced machine learning models...</p>
+        </section>
+    
+        
+        <!-- India Map Section -->
+        <section id="india-map">
+            <h2>Fire Occurrences in India</h2>
+            <div class="box-container">
+                <h1>Map Display</h1>
+                <div class="iframe-container">
+                    <!-- <iframe src="test.html" width="100%" height="500px" frameborder="0"></iframe> -->
+                    <iframe src="{{ url_for('static', filename='test.html') }}" width="100%" height="500px" frameborder="0"></iframe>
+
+                </div>
+                <div class="legend">
+                    <div><span class="eastern"></span> Eastern: 3276</div>
+                    <div><span class="southern"></span> Southern: 3178</div>
+                    <div><span class="northern"></span> Northern: 3141</div>
+                    <div><span class="central"></span> Central: 3093</div>
+                    <div><span class="western"></span> Western: 3069</div>
+                </div>
+            </div>
+        </section>
+
+        <section id="graph-info">
+            <h2>About the Graphs</h2>
+            <p>Our graphs provide insights into various environmental factors on forest fires</p>
+            <p>These graphs plot the relationships between:</p>
+            <p>Temperature, Humidity, Oxygen Levels, Region, Fire Occurrence</p>
+            
+            <h3>By analyzing these graphs, we can better understand how these factors influence the likelihood of forest fires in different regions.</h3>
+        </section>
+
+
+        <!-- New Section with Dropdown -->
+        <section id="image-dropdown">
+            <h2>Choose to Display the Graph</h2>
+            <div>
+                <select id="imageSelector">
+                    <option value="">Select</option>
+                    <option value="https://i.ibb.co/jPd5skHP/1.jpg">Graph 1</option>
+                    <option value="https://i.ibb.co/60Gg2Qds/2.jpg">Graph 2</option>
+                    <option value="https://i.ibb.co/3Yrn3P0g/3.jpg">Graph 3</option>
+                    <option value="https://i.ibb.co/PzYd6wVV/4.jpg">Graph 4</option>
+                    <option value="https://i.ibb.co/s942DLYy/5.jpg">Graph 5</option>
+                    <option value="https://i.ibb.co/Rk1dhTHR/6.jpg">Graph 6</option>
+                    <option value="https://i.ibb.co/8gpbh6ZC/7.jpg">Graph 7</option>
+                    <option value="https://i.ibb.co/hFs6GcVm/8.jpg">Graph 8</option>
+
+                </select>
+                <br>
+                <br>
+            </div>
+            <div id="imageContainer">
+                <img id="displayedImage" src="" alt="Selected Image" style="display:none; width:100%; max-width:600px;">
+            </div>
+        </section>
+    </main>
+
+
+    <footer>
+        <p>&copy; 2024 FireSight. All rights reserved. Contact us at info@firesight.com</p>
+    </footer>
+    
+    <script>
+        document.getElementById('imageSelector').addEventListener('change', function() {
+            var imagePath = this.value;
+            var imageElement = document.getElementById('displayedImage');
+            if (imagePath) {
+                imageElement.src = imagePath;
+                imageElement.style.display = 'block';
+            } else {
+                imageElement.style.display = 'none';
+            }
+        });
+    </script>
+</body>
+</html>
