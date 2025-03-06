@@ -7,7 +7,7 @@ app = Flask(__name__)
 
 # Paths to the model and CSV file
 model_file_path = "forest_fire_model.pkl"  # Ensure this path is correct
-csv_file_path = "C:/Users/saich/charan/fires/mapgrpah/data/Aag.csv"  # Ensure this path is correct
+csv_file_path = "data/Aag.csv"  # Ensure this path is correct
 
 # Load the model
 with open(model_file_path, 'rb') as model_file:
